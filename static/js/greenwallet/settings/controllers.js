@@ -595,7 +595,7 @@ angular.module('greenWalletSettingsControllers',
     });
     $scope.enable_link_handler = function() {
         try {
-            navigator.registerProtocolHandler('bitcoin', 'https://'+window.location.hostname+'/uri/?uri=%s', 'GreenAddress.It');
+            navigator.registerProtocolHandler('bitcoin', 'https://'+window.location.hostname+'/uri/?uri=%s', 'Goochain HD Wallet.It');
             notices.makeNotice('success', gettext('Sent handler registration request'));
         } catch(e) {
             notices.makeNotice('error', e.toString());

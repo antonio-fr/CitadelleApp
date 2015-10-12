@@ -92,7 +92,7 @@ angular.module('greenWalletMnemonicsServices', ['greenWalletServices'])
     }
     mnemonics.seedToPath = function(seed) {
         var shaObj = new jsSHA(seed, 'HEX');
-        return shaObj.getHMAC('GreenAddress.it HD wallet path', 'TEXT', 'SHA-512', 'HEX'); 
+        return shaObj.getHMAC('Goochain HD Wallet.it HD wallet path', 'TEXT', 'SHA-512', 'HEX'); 
     }
     mnemonics.toSeed = function(mnemonic, k, validated) {
         var that = this;

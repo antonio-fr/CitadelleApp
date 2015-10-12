@@ -299,7 +299,7 @@ angular.module('greenWalletServices', [])
             var path_d = btchip.app.getWalletPublicKey_async("18241'").then(function(result) {
                 var ecPub = new Bitcoin.ECPubKey(Bitcoin.convert.hexToBytes(result.publicKey.toString(HEX)));
                 var extended = result.chainCode.toString(HEX) + ecPub.toHex(true);
-                var path = Bitcoin.CryptoJS.HmacSHA512(extended, 'GreenAddress.it HD wallet path');
+                var path = Bitcoin.CryptoJS.HmacSHA512(extended, 'Goochain HD Wallet.it HD wallet path');
                 return Bitcoin.CryptoJS.enc.Hex.stringify(path);
             });
         } else path_d = $q.when();
@@ -1194,7 +1194,7 @@ angular.module('greenWalletServices', [])
         if (is_chrome_app) {
                 var opt = {
                     type: "basic",
-                    title: "GreenAddress Notification",
+                    title: "Goochain HD Wallet Notification",
                     message: msg,
                     iconUrl: BASE_URL + "/static/img/logos/logo-greenaddress.png"
                 };
