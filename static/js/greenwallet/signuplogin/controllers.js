@@ -348,7 +348,7 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
     var template = gettext("{hardware_wallet_name} Login");
     btchip.getDevice('retry').then(function(btchip) {
         btchip.dongle.disconnect_async();
-        state.hw_detected = template.replace('{hardware_wallet_name}', 'BTChip');
+        state.hw_detected = template.replace('{hardware_wallet_name}', 'Citadelle');
     });
 
     trezor.getDevice('retry', true).then(function(trezor) {
