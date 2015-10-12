@@ -270,7 +270,7 @@
 <div class="row" ng-controller="PrivacyController">
   <div class="col-md-3">
     <div class="sub-header">Privacidad</div>
-    <div class="sub-header-desc">Decida quién puede enviarle dinero directamente a su wallet GreenAddres, y quién puede ver su nombre cuando reciba dinero de usted</div>
+    <div class="sub-header-desc">Decida quién puede enviarle dinero directamente a su wallet Goochain Citadelle, y quién puede ver su nombre cuando reciba dinero de usted</div>
   </div>
   <div class="col-md-9" submittable>
       <form role="form" class="row">
@@ -461,7 +461,7 @@
     <form role="form" class="form-inline" ng-submit="settings.nlocktime.update()">
       <div class="form-group">
         <div ng-class="{grayedout: !settings.notifications.email_incoming || !settings.notifications.email_outgoing || !wallet.twofac.email_confirmed}">
-          <label for="id_nlocktime_blocks" class="control-label">Permitir redimir fondos sin una firma de GreenAddres</label>
+          <label for="id_nlocktime_blocks" class="control-label">Permitir redimir fondos sin una firma de Goochain Citadelle</label>
           <input class="form-control" type="tel" ng-model="settings.nlocktime.blocks_new" ng-disabled="settings.nlocktime.updating_nlocktime_blocks || !settings.notifications.email_incoming || !settings.notifications.email_outgoing || !wallet.twofac.email_confirmed" />
           bloques
           <input type="submit" class="btn btn-sm btn-default" value="Save" ng-show="settings.nlocktime.blocks_new != settings.nlocktime.blocks" ng-disabled="settings.nlocktime.updating_nlocktime_blocks"  />
