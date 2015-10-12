@@ -38,6 +38,6 @@
     "icons": { "16": "icon16.png",
                "48": "icon48.png",
               "128": "icon128.png" },
-    "name": "Goochain HD Wallet Regtest",
+    "name": "Goochain Citadelle Wallet Regtest",
     "version": "0.0.69"
 }

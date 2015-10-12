@@ -1,6 +1,6 @@
 <div class="modal-body text-center">
 	<div ng-show="btchip.already_setup">
-    	<p>Su BTChip ya está configurado. Para usarlo con Goochain HD Wallet, usted necesita restablecerlo. ¿Quiere restablecer su BTChip? Esto será realizado ingresando un PIN incorrecto 3 veces seguidas.<strong>Usted perderá sus claves actualmente almacenadas en el dispositivo.</strong></p>
+    	<p>Su BTChip ya está configurado. Para usarlo con Goochain Citadelle Wallet, usted necesita restablecerlo. ¿Quiere restablecer su BTChip? Esto será realizado ingresando un PIN incorrecto 3 veces seguidas.<strong>Usted perderá sus claves actualmente almacenadas en el dispositivo.</strong></p>
     	<button ng-hide="btchip.resetting" type="button" class="btn btn-danger" ng-click="btchip.reset()">Reiniciar mi BTChip</button>
     	<button ng-show="btchip.resetting" type="button" disabled="disabled" class="btn btn-danger" ng-click="btchip.reset()">Restableciendo...
     	<span ng-show="btchip.replug_required">Por favor desconecte y conecte su dispositivo nuevamente (<span>(( btchip.resets_remaining )) PINs incorrectos restantes</span>)</span></button>
