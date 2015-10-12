@@ -63,10 +63,6 @@
 
                     <div class="text-center" ng-show="!wallet.send_to_receiving_id && !has_payreq && state.toggleshowpin && !(state.seed_progress && !state.login_error)">
                         <hr>
-                        <div class="subtitle">Zaloguj w trybie Tylko-do-Odczytu</div>
-                        
-                        <a href="" ng-class="{disabled: logging_in}" ng-click="login_with_custom()" class="btn btn-default"><i class="glyphicon glyphicon-lock"></i> Własny login</a>
-                    </div>
                     <div ng-show="state.hw_detected" class="text-center">
                         <hr>
                         <div class="subtitle">Log in via hardware wallet</div>
