@@ -1687,7 +1687,7 @@ angular.module('greenWalletServices', [])
 
     cordovaReady(function() {
         var e = document.createElement('script');e.async = true;
-        e.src = 'https://connect.facebook.net/en_US/all.js';
+        //e.src = 'https://connect.facebook.net/en_US/all.js';
         document.getElementById('fb-root').appendChild(e);
     })();
 
