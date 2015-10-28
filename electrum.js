@@ -75,17 +75,12 @@ function Electrum() {
 
 Electrum.SERVERS = [
   "electrum.no-ip.org",
-  "electrum.stepkrav.pw",
   "ecdsa.net",
-  "bitcoin.epicinet.net",
   "erbium1.sytes.net",
   "electrum0.electricnewyear.net",
   "kirsche.emzy.de",
-  "electrum2.hachre.de",
   "electrum.hsmiths.com",
-  "EAST.electrum.jdubya.info",
-  "WEST.electrum.jdubya.info",
-  "electrum.thwg.org"
+  "EAST.electrum.jdubya.info"
 ];
 
 Electrum.prototype.checkConnectionsAvailable = function() {

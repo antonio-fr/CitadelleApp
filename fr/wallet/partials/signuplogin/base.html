@@ -3,16 +3,25 @@
     <div class="create-modal-dialog">
         <div class="create-modal-content">
             <div class="create-modal-header" ng-hide="wallet.redeem_key">
-                Pas encore de compte ?
+                Citadelle juste reçu ?
                 <a href="#/create"><strong>Créer un nouveau porte-monnaie</strong></a>
             </div>
             <div class="create-modal-body">
                 <div ng-include="wallet.signuplogin_header"></div>
                 <hr>
-                <div class="subtitle">Connexion avec accès complet</div>
+				<div ng-show="state.hw_detected" class="text-center">
+                        <hr>
+                        <div class="subtitle">Connexion via hardware wallet</div>
+                        <a ng-class="{disabled: logging_in}" href="" ng-click="login_with_hw()" class="btn btn-default"><i class="glyphicon glyphicon-transfer"></i>
+                        <span ng-hide="logging_in">(( state.hw_detected ))</span>
+                        <span ng-show="logging_in && !hardware_progress">Ouverture, patientez...</span>
+                        <span ng-show="logging_in && hardware_progress">(( hardware_progress ))%</span>
+                        </a>
+                </div>
+                <div class="subtitle">Connecter Citadelle ou réinitialiser avec mots-clé ci-dessous</div>
                 <form submittable class="form-horizontal" ng-submit="login()" ng-class="{'has-error': state.mnemonic_error}" autocomplete="off">
                     <div class="form-group" ng-show="!state.toggleshowpin" ng-class="{'has-error': state.error && form.$invalid}">
-                        <label class="col-sm-3 col-sm-offset-2 control-label" for="pin">PIN Number</label>
+                        <label class="col-sm-3 col-sm-offset-2 control-label" for="pin">Code PIN</label>
                         <div class="col-sm-4">
                             <span class="input-group">
                                 <input ng-show="state.has_pin && !state.toggleshowpin" tabindex="1" class="form-control pin" ng-disabled="logging_in" type="tel" mask-input name="pin" id="pin" maxlength="15" pattern="[0-9]{4,15}" ng-pattern="/[0-9]{4,15}/" focus-on="pin" placeholder="Entrez votre PIN" ng-model="use_pin_data.pin" />
@@ -26,7 +35,7 @@
                         </div>
                     </div>
                     <div class="form-group" ng-show="state.toggleshowpin">
-                        <label class="col-md-2 col-md-offset-1 control-label" for="pin">Mnemonic</label>
+                        <label class="col-md-2 col-md-offset-1 control-label" for="pin">Mnemonique</label>
                         <div class="col-md-8" >
                             <span class="input-group">
                                 <input class="form-control noanimate" ng-show="state.toggleshowpassword" ng-disabled="is_loading || logging_in || payreq_loading" ng-model="state.mnemonic" placeholder="Enter your Mnemonic passphrase" ng-class="{'has-error': state.mnemonic_error}" />
@@ -63,15 +72,6 @@
 
                     <div class="text-center" ng-show="!wallet.send_to_receiving_id && !has_payreq && state.toggleshowpin && !(state.seed_progress && !state.login_error)">
                         <hr>
-                    <div ng-show="state.hw_detected" class="text-center">
-                        <hr>
-                        <div class="subtitle">Log in via hardware wallet</div>
-                        <a ng-class="{disabled: logging_in}" href="" ng-click="login_with_hw()" class="btn btn-default"><i class="glyphicon glyphicon-transfer"></i>
-                        <span ng-hide="logging_in">(( state.hw_detected ))</span>
-                        <span ng-show="logging_in && !hardware_progress">Logging in, please wait...</span>
-                        <span ng-show="logging_in && hardware_progress">(( hardware_progress ))%</span>
-                        </a>
-                    </div>
                 </form>
             </div>
             <div class="create-modal-footer" ng-show="state.has_pin">

@@ -8,7 +8,7 @@
         <dd>(( selected_transaction.ts ))</dd>
 
         <dt>Hash</dt>
-        <dd>(( selected_transaction.txhash ))</dd>
+        <dd><a href="https://goochain.net/s?s=(( selected_transaction.txhash ))" target=_blank>(( selected_transaction.txhash ))</a></dd>
 
         <dt>Memo</dt>
         <dd>
@@ -52,7 +52,7 @@
     <table class="table">
         <tr><th>Address</th><th>Amount</th></tr>
         <tr ng-repeat="input in selected_transaction.inputs|limitTo:10">
-            <td>(( input.ad ))</td>
+            <td><a href="https://goochain.net/s?s=(( input.ad ))" target=_blank>(( input.ad ))</a></td>
             <td>(( input.value | format_btc:wallet.unit ))</td>
         </tr>
     </table>
@@ -64,7 +64,7 @@
     <table class="table">
         <tr><th>Address</th><th>Amount</th></tr>
         <tr ng-repeat="output in selected_transaction.outputs|limitTo:10">
-            <td>(( output.ad ))</td>
+            <td><a href="https://goochain.net/s?s=(( output.ad ))" target=_blank>(( output.ad ))</a></td>
             <td>(( output.value | format_btc:wallet.unit ))</td>
         </tr>
     </table>
