@@ -5961,6 +5961,7 @@ a:focus {
 .btn.btn-default {
   text-shadow: 0 1px rgba(255, 255, 255, 0.1);
   font-weight: 300;
+  margin-bottom: 20px;
 }
 .btn.btn-link {
   text-shadow: 0 1px rgba(255, 255, 255, 0.1);
@@ -7456,9 +7457,8 @@ input[type="checkbox"].switch:disabled + span + span {
   padding: 25px;
   padding: 8px 20px;
   background: #f4f4f4;
-  color: #808080;
-  font-size: 14px;
-  font-style: italic;
+  color: #383838;
+  font-size: 18px;
   font-weight: 300;
   text-align: right;
   border-bottom: 1px solid #ddd;
