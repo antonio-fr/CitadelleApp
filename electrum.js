@@ -80,7 +80,7 @@ Electrum.SERVERS = [
   "electrum0.electricnewyear.net",
   "kirsche.emzy.de",
   "electrum.hsmiths.com",
-  "EAST.electrum.jdubya.info",
+  "EAST.electrum.jdubya.info"
 ];
 
 Electrum.prototype.checkConnectionsAvailable = function() {
