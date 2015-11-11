@@ -287,20 +287,6 @@ angular.module('greenWalletControllers', [])
     $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue) {
         $modalStack.dismissAll();
         if (newValue == '/') tx_sender.logout();  // logout on navigation to login page
-        var pathname = window.location.pathname
-        // don't include addresses:
-        if (newValue.indexOf('/send/') == 0) newValue = '/send/_ad_';
-        if (pathname.indexOf('/'+LANG+'/pay/') == 0) pathname = BASE_URL+'/'+LANG+'/pay/_ad_';
-        if (pathname.indexOf('/'+LANG+'/redeem/') == 0) pathname = BASE_URL+'/'+LANG+'/redeem/_enckey_';
-        pathname = pathname + '#' + newValue;
-        if ($scope.wallet.signup && !$scope.wallet.signup_info_replaced && pathname.indexOf('wallet/#/info') != -1) {
-            $scope.wallet.signup_info_replaced = true;
-            pathname = pathname.replace('wallet/#/receive', 'wallet/#/receive_from_signup');
-        }
-        try {
-            _gaq.push(['set', 'page', pathname]);
-        } catch(e) {}
-        setTimeout(function() { gaEvent('_pageview', pathname); }, 1000);
     });
 
 }]).controller('UrlQRController', ['$scope', 'url', function UrlQRController($scope, url) {
@@ -317,7 +303,7 @@ angular.module('greenWalletControllers', [])
         for (var i = 0; i < txos.length; ++i) {
             txos_in.push([txos[i].txhash, txos[i].out_n]);
         }
-        tx_sender.call("http://greenaddressit.com/vault/prepare_redeposit", txos_in).then(function(data) {
+        tx_sender.call("http://greenaddressit.com/vault/prepare_redeposit", txos_in, {prevouts_mode: 'http'}).then(function(data) {
             wallets.sign_and_send_tx($scope, data, false, twofac_data).then(function() {
                 deferred.resolve();
             }, function(err) {
@@ -341,7 +327,8 @@ angular.module('greenWalletControllers', [])
     $scope.redeposit_multiple_tx = function() {
         $scope.redepositing = true;
         return tx_sender.call("http://greenaddressit.com/vault/prepare_redeposit",
-                [[$scope.wallet.expired_deposits[0].txhash, $scope.wallet.expired_deposits[0].out_n]]).then(function() {
+                [[$scope.wallet.expired_deposits[0].txhash, $scope.wallet.expired_deposits[0].out_n]],
+                {prevouts_mode: 'http'}).then(function() {
             // prepare one to set appropriate tx data for 2FA
             return wallets.get_two_factor_code($scope, 'send_tx', null, true).then(function(twofac_data) {
                 var promise = $q.when();
