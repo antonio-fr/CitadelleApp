@@ -457,13 +457,13 @@
 <div class="row">
   <div class="col-md-3">
     <div class="sub-header">nLockTime</div>
-    <div class="sub-header-desc">Las transacciones nLockTime le permiten redimir tus fondos depositados sin la firma de Goochain Citadelle Wallet luego de una cantidad predefinida de bloques</div>
+    <div class="sub-header-desc">Las transacciones nLockTime le permiten redimir tus fondos depositados sin la firma de GreenAddress 2FA luego de una cantidad predefinida de bloques</div>
   </div>
   <div class="col-md-9">
     <form role="form" class="form-inline" ng-submit="settings.nlocktime.update()">
       <div class="form-group">
         <div ng-class="{grayedout: !settings.notifications.email_incoming || !settings.notifications.email_outgoing || !wallet.twofac.email_confirmed}">
-          <label for="id_nlocktime_blocks" class="control-label">Permitir redimir fondos sin una firma de Goochain Citadelle</label>
+          <label for="id_nlocktime_blocks" class="control-label">Permitir redimir fondos sin una firma de GreenAddress 2FA</label>
           <input class="form-control" type="tel" ng-model="settings.nlocktime.blocks_new" ng-disabled="settings.nlocktime.updating_nlocktime_blocks || !settings.notifications.email_incoming || !settings.notifications.email_outgoing || !wallet.twofac.email_confirmed" />
           bloques
           <input type="submit" class="btn btn-sm btn-default" value="Save" ng-show="settings.nlocktime.blocks_new != settings.nlocktime.blocks" ng-disabled="settings.nlocktime.updating_nlocktime_blocks"  />
