@@ -212,8 +212,8 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                 gaEvent('Login', 'PinSet');
                 modal.close();
             }, function(error) {
-                gaEvent('Login', 'PinSettingError', error.desc);
-                notices.makeNotice('error', error.desc);
+                gaEvent('Login', 'PinSettingError', error.args[1]);
+                notices.makeNotice('error', error.args[1]);
             });
         }
     };
@@ -225,13 +225,13 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
             wallets.loginWatchOnly($scope, 'facebook', FB.getAuthResponse().accessToken).then(function() {
                 gaEvent('Login', 'FacebookLoginSucceeded');
             }).catch(function(e) {
-                if (e && e.uri == "http://greenaddressit.com/error#usernotfound") {
+                if (e && e.args[0] == "http://greenaddressit.com/error#usernotfound") {
                     gaEvent('Login', 'FacebookLoginRedirectedToOnboarding');
                     $scope.wallet.signup_fb_prelogged_in = true;
                     $location.path('/create');
                 } else {
-                    gaEvent('Login', 'FacebookLoginFailed', e && e.desc || e);
-                    notices.makeNotice('error', e ? (e.desc || e) : gettext('Unknown error'));
+                    gaEvent('Login', 'FacebookLoginFailed', e && e.args[1] || e);
+                    notices.makeNotice('error', e ? (e.args[1] || e) : gettext('Unknown error'));
                 }
             });
         });
@@ -249,8 +249,8 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                     $scope.wallet.signup_reddit_prelogged_in = token;
                     $location.path('/create');
                 } else {
-                    gaEvent('Login', 'RedditLoginFailed', e.desc);
-                    notices.makeNotice('error', e.desc);
+                    gaEvent('Login', 'RedditLoginFailed', e.args[1]);
+                    notices.makeNotice('error', e.args[1]);
                 }
             });
         });
@@ -264,8 +264,8 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                 gaEvent('Login', 'CustomLoginSucceeded');
                 modal.close();
             }).catch(function(e) {
-                gaEvent('Login', 'CustomLoginFailed', e.desc);
-                notices.makeNotice('error', e.desc);
+                gaEvent('Login', 'CustomLoginFailed', e.args[1]);
+                notices.makeNotice('error', e.args[1]);
             });
         };
         var modal = $modal.open({
@@ -390,7 +390,10 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                     if(decoded && JSON.parse(decoded).seed) {
                         gaEvent('Login', 'PinLoginSucceeded');
                         var parsed = JSON.parse(decoded);
-                        if (!parsed.path_seed) {
+                        if (!parsed.path_seed && parsed.mnemonic) {
+                            // FIXME: if path_seed and mnemonics is missing, we
+                            // should calculate the path_seed from seed
+                            // (hw wallets)
                             return mnemonics.toSeed(parsed.mnemonic, 'greenaddress_path').then(function(path_seed) {
                                 parsed.path_seed = path_seed;
                                 crypto.encrypt(JSON.stringify(parsed), password).then(function(encrypted) {
@@ -417,9 +420,9 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                     }
                 });
             }, function(e) {
-                gaEvent('Login', 'PinLoginFailed', e.desc);
+                gaEvent('Login', 'PinLoginFailed', e.args[1]);
                 var suffix = '';
-                if (e.uri == "http://greenaddressit.com/error#password") {
+                if (e.args[0] == "http://greenaddressit.com/error#password") {
                     pin_attempts_left -= 1;
                     if (pin_attempts_left > 0) {
                         suffix = '; ' + gettext('%s attempts left.').replace('%s', pin_attempts_left);
@@ -432,7 +435,7 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                         delete use_pin_data.pin;
                     }
                 }
-                notices.makeNotice('error', (e.desc || e) + suffix);
+                notices.makeNotice('error', (e.args[1] || e) + suffix);
                 state.login_error = true;
             });
     }
