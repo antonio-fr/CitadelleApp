@@ -31,7 +31,7 @@
                 <div class="mnemonic-label ng-cloak" ng-show="signup.mnemonic && !signup.mnemonic_encrypted">Ваша мнемонічна фраза-пароль</div>
                 <div class="mnemonic-label ng-cloak" ng-show="signup.mnemonic && signup.mnemonic_encrypted">Your <strong>encrypted</strong> mnemonic passphrase</div>
                 <div class="mnemonic info ng-cloak" ng-show="signup.mnemonic_encrypted || signup.mnemonic">
-                <span ng-bind="signup.mnemonic_encrypted || signup.mnemonic" ></span>
+                <span ng-bind-html="printmnemonic(signup.mnemonic)" ></span>
                 
                 <!-- <a ng-hide="wallet.nohw_chosen" ng-click="signup.usb_hwseed_modal()"  ng-class="{disabled: signup.hw_wallet_processing}" tooltip-placement="left" tooltip="Click to use hardware wallet seed instead" class="btn btn-default btn-xs" style="float: right; position: relative; top: 14px; left: 18px;"><i class="glyphicon glyphicon-transfer"></i></a> -->
                 
