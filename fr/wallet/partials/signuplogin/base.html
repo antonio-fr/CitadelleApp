@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="form-group" ng-show="state.toggleshowpin">
-                        <label class="col-md-2 col-md-offset-1 control-label" for="pin">Mnemonique</label>
+                        <label class="col-md-2 col-md-offset-1 control-label" for="pin">Mnémonique</label>
                         <div class="col-md-8" >
                             <span class="input-group">
                                 <input class="form-control noanimate" ng-show="state.toggleshowpassword" ng-disabled="is_loading || logging_in || payreq_loading" ng-model="state.mnemonic" placeholder="Enter your Mnemonic passphrase" ng-class="{'has-error': state.mnemonic_error}" />
@@ -62,7 +62,7 @@
                                 <label class="switch" ng-show="state.toggleshowpin" >
                                   <input type="checkbox" class="switch" ng-model="state.toggleshowpassword" ng-disabled="is_loading || logging_in || payreq_loading"/>
                                   <span class="switch"></span>
-                                    Show mnemonics
+                                    Montrer la passphrase mnémonique
                                 </label>
                             </span>
                         </div>
