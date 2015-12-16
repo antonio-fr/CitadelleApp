@@ -241,6 +241,21 @@ return ['$scope', '$location', 'mnemonics', 'tx_sender', 'notices', 'wallets', '
         }
     }
 
+    $scope.printmnemonic = function(rawmnemo) {
+        if (typeof rawmnemo != 'undefined'){
+            var mnemosplit = rawmnemo.split(' ');
+            var mnemonicdisp = ['<table style="font-size: 20px;"><tr>'];
+            for (var i = 1; i < 25; ++i) {
+                    mnemonicdisp.push('<td style="padding: 3px 5px;">'+i.toString()+".&#8239;"+mnemosplit[i-1]+"</td>");
+                    if ( ((i) % 6) == 0){
+                        if (i<24) mnemonicdisp.push("</tr><tr>");
+                    }
+            }
+            mnemonicdisp.push("</tr></table>");
+            return $sce.trustAsHtml(mnemonicdisp.join(''));
+        }             
+    };
+
     $scope.signup.try_again = function() {
         // should not ever happen, but just in case we have another bug
         generate_mnemonic();

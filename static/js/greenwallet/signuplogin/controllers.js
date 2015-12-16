@@ -335,6 +335,7 @@ angular.module('greenWalletSignupLoginControllers', ['greenWalletMnemonicsServic
                     } else if (error.indexOf("63c0") >= 0) {
                         notices.makeNotice("error", gettext("Invalid PIN, dongle wiped"));
                     } else if (error.indexOf("6985") >= 0) {
+					    document.location.href = '#/create';
                         notices.makeNotice("error", gettext("Dongle is not set up"));
                     } else if (error.indexOf("6faa") >= 0) {
                         notices.makeNotice("error", gettext("Dongle is locked - reconnect the dongle and retry"));

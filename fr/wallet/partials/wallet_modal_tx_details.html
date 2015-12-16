@@ -33,22 +33,22 @@
         <dt>Frais</dt>
         <dd>(( selected_transaction.fee | format_btc:wallet.unit ))</dd>
 
-        <dt ng-show="selected_transaction.double_spent_by">Raw transaction</dt>
+        <dt ng-show="selected_transaction.double_spent_by">Transaction brute</dt>
         <dd ng-show="selected_transaction.double_spent_by">(( selected_transaction.rawtx ))</dd>
 
         <dt ng-show="selected_transaction.double_spent_by">Double spend by txhash</dt>
         <dd ng-show="selected_transaction.double_spent_by">(( selected_transaction.double_spent_by ))</dd>
 
-        <dt ng-show="selected_transaction.payment_request">Payment request</dt>
+        <dt ng-show="selected_transaction.payment_request">demande de paiement</dt>
         <dd ng-show="selected_transaction.payment_request">
-            <a ng-href="(( selected_transaction.payment_request ))" download="(( selected_transaction.txhash )).paymentrequest">download</a>
+            <a ng-href="(( selected_transaction.payment_request ))" download="(( selected_transaction.txhash )).paymentrequest">Download</a>
         </dd>
     </dl>
 
     <hr class="double">
 
     <p style="font-size:140%;"><b>Entrées</b></p>
-    <p ng-show="selected_transaction.inputs.length > 10">The inputs below are only the first 10 inputs of this transaction. To see all of them, use a block explorer.
+    <p ng-show="selected_transaction.inputs.length > 10">Les inputs ci-dessous sont les 10 premières de la transaction. pour tous les voir, utilisez un block-explorer.
     <table class="table">
         <tr><th>Adresse</th><th>Montant</th></tr>
         <tr ng-repeat="input in selected_transaction.inputs|limitTo:10">
@@ -60,7 +60,7 @@
     <hr class="double">
 
     <p style="font-size:140%;"><b>Sorties</b></p>
-    <p ng-show="selected_transaction.outputs.length > 10">The outputs below are only the first 10 outputs of this transaction. To see all of them, use a block explorer.
+    <p ng-show="selected_transaction.outputs.length > 10">Les outputs ci-dessous sont les 10 premières de la transaction. pour tous les voir, utilisez un block-explorer.
     <table class="table">
         <tr><th>Adresse</th><th>Montant</th></tr>
         <tr ng-repeat="output in selected_transaction.outputs|limitTo:10">

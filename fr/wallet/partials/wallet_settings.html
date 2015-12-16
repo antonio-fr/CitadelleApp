@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="header">
-      General Settings
+      Réglages génériques
     </div>
   </div>
 </div>
@@ -41,8 +41,8 @@
 <hr class="double">
 <div class="row" ng-controller="SoundController">
   <div class="col-md-3">
-    <div class="sub-header">Sound</div>
-    <div class="sub-header-desc">Enable or disable sounds</div>
+    <div class="sub-header">Son</div>
+    <div class="sub-header-desc">Activer ou désactiver le son</div>
   </div>
   <div class="col-md-9" submittable>
     <form role="form" class="form-horizontal">
@@ -50,7 +50,7 @@
             <label class="switch col-sm-3">
                 <input type="checkbox" class="switch" ng-model="wallet.appearance.sound"/>
                 <span class="switch"></span>
-                Enable sounds
+                Activer le son
             </label>
         </div>
     </form>
@@ -59,7 +59,7 @@
 <hr class="double">
 <div class="row">
   <div class="col-md-3">
-    <div class="sub-header">Language</div>
+    <div class="sub-header">Langue</div>
     <div class="sub-header-desc">Changer la langue de</div>
   </div>
   <div class="col-md-9" submittable>
@@ -90,18 +90,18 @@
 <div id="security">
 <hr class="double">
 <div class="header">
-  Security
+  Securité
 </div>
 <div class="row">
   <div class="col-md-3">
     <div class="sub-header">email</div>
-    <div class="sub-header-desc">Set your email address for transactions notifications, two factor authentication, and nLockTime transactions.</div>
+    <div class="sub-header-desc">Indiquer votre email pour les notifications de transactions, le second facteur d'authentification et les transactions LockTime.</div>
   </div>
   <div class="col-md-9">
       <form ng-submit="set_new_email()" class="form-horizontal" role="form">
         <div class="form-group">
-          <label ng-show="wallet.twofac.email_addr" class="control-label col-sm-3">Change email address</label>
-          <label ng-hide="wallet.twofac.email_addr" class="control-label col-sm-3">Set email address</label>
+          <label ng-show="wallet.twofac.email_addr" class="control-label col-sm-3">Modifier l'adresse email</label>
+          <label ng-hide="wallet.twofac.email_addr" class="control-label col-sm-3">Ajouter une adresse email</label>
           <div class="col-sm-4">
             <input type="email" class="form-control" placeholder="Votre adresse email" ng-model="settings.new_email" ng-disabled="settings.setting_email">
             <input type="submit" class="btn btn-primary" ng-show="settings.new_email != wallet.twofac.email_addr" value="Enregistrer" ng-disabled="settings.setting_email" />
@@ -109,7 +109,7 @@
         </div>
       </form>
       <div ng-show="wallet.twofac.email_addr && !wallet.twofac.email_confirmed" class="col-sm-9">
-          <p>You need to provide confirmation code from your email to allow using it.<br>              Please check your email and provide the code.
+          <p>Vous devez fournir le code de confirmation recu par email pour pouvoir utiliser cet email.<br>Vérifiez vos emails et indiquer le code.
           </p>
           <form ng-submit="confirm_email()" class="form-horizontal" role="form">
             <label class="col-sm-4 control-label" for="wallet-sms-conf-code">Code de l'email</label>
@@ -125,7 +125,7 @@
             </div>
           </form>
           <div class="row"><div class="col-sm-12">
-            <p>The code is valid only for 5 minutes, so you can request another one if necessary. <a href="" ng-click="set_new_email()" class="btn btn-info btn-xs" ng-class="{disabled: settings.setting_email}">Request another code</a></p>
+            <p>Le code n'est valide que 5 minutes, vous pouvez en demander un nouveau si nécessaire.<a href="" ng-click="set_new_email()" class="btn btn-info btn-xs" ng-class="{disabled: settings.setting_email}">Demander un nouveau code</a></p>
           </div></div>
       </div>
   </div>
@@ -134,11 +134,11 @@
 <div class="row" ng-controller="PgpController">
   <div class="col-md-3">
     <div class="sub-header">PGP</div>
-    <div class="sub-header-desc">Set your Pretty Good Privacy public key for improved privacy.</div>
+    <div class="sub-header-desc">Indiquer votre clé publique PGP pour une meilleure confidentialité.</div>
   </div>
   <div class="col-md-9" submittable>
     <form role="form" class="form-horizontal" ng-submit="save_pgp()">
-        <label class="col-sm-2 control-label" for="wallet-emailpgp">Public Key</label>
+        <label class="col-sm-2 control-label" for="wallet-emailpgp">Clé Publique</label>
         <div class="input-group">
             <textarea class="form-control" placeholder="----BEGIN PGP PUBLIC KEY..."
                    ng-model="pgpstate.pgp" id="wallet-emailpgp" ng-trim="false"></textarea>
@@ -147,7 +147,7 @@
     </form>
   </div>
 </div>
-<hr class="double" ng-show="!settings.noLocalStorage">
+<!-- <hr class="double" ng-show="!settings.noLocalStorage">
 <div ng-controller="QuickLoginController" class="row" ng-show="!settings.noLocalStorage">
   <div class="col-md-3">
     <div class="sub-header">Quick Login</div>
@@ -175,7 +175,7 @@
           <hr>
         </div>
         <button class="btn btn-danger btn-block-xs" ng-click="remove_all_pin_logins()"><i class="glyphicon glyphicon-remove"></i> Désactiver la connexion rapide pour tous les appareils</button>
-        <!--
+        
         <div class="form-group">
           <select id="quick-login-select" ng-model="quicklogin.selected_device" ng-options="device.device_name for device in quicklogin.devices"></select>
           <label for="pin" class="col-sm-3 control-label">définir le PIN</label>
@@ -187,7 +187,7 @@
             <input type="submit" class="btn btn-primary" ng-show="quicklogin.selected_device.is_current && quicklogin.new_pin" value="Confirmer" ng-disabled="quicklogin.setting_pin" />
           </div>
         </div>
-        -->
+       
       </form>
     </div>
   </div>
@@ -213,7 +213,7 @@
       </div>
     </form>
   </div>
-</div>
+</div> -->
 <hr class="double">
 <div class="row">
   <div class="col-md-3">
@@ -271,29 +271,29 @@
 <hr class="double">
 <div class="row" ng-controller="PrivacyController">
   <div class="col-md-3">
-    <div class="sub-header">Privacy</div>
+    <div class="sub-header">Confidentialité</div>
     <div class="sub-header-desc">Decide who can send you money directly to your Goochain Citadelle wallet, and who can see your name when receiving money from you</div>
   </div>
   <div class="col-md-9" submittable>
       <form role="form" class="row">
         <div class="form-group">
-          <div class="col-sm-5"><label class="control-label" for="privacy_send_me">Allow sending to my wallet via email/Reddit</label>
-          <br /><small>(NOTE: at this moment addressbook is not supported for Reddit contacts, so choosing 'Addressbook contacts' will disallow sending to you wallet directly using your Reddit handle)</small></div>
+          <div class="col-sm-5"><label class="control-label" for="privacy_send_me">Autoriser l'envoie de fond via mon email</label>
+          <br /></div>
           <select ng-model="privacy.send_me" id="privacy_send_me" class="col-sm-4" ng-disabled="privacy.updating_send_me">
-            <option value="2">Everyone</option>
-            <option value="1">Addressbook contacts</option>
-            <option value="0">No one</option>
+            <option value="2">Tous le monde</option>
+            <option value="1">Mes contacts du carnet d'adresses</option>
+            <option value="0">Personne</option>
           </select>
         </div>
       </form>
       <form role="form" class="row">
         <div class="form-group">
-          <div class="col-sm-5"><label class="control-label" for="privacy_show_as_sender">Show my email/Reddit handle as sender to </label>
-          <br /><small>(NOTE: at this moment addressbook is not supported for Reddit contacts, so choosing 'Mutually added in addressbook' will cause you to be never visible as sender when using Reddit handle for sending)</small></div>
+          <div class="col-sm-5"><label class="control-label" for="privacy_show_as_sender">Afficher mon email en tant que créateur de mes transactions</label>
+          <br /></div>
           <select ng-model="privacy.show_as_sender" id="privacy_show_as_sender" class="col-sm-4" ng-disabled="privacy.updating_show_as_sender">
-            <option value="2">Everyone</option>
-            <option value="1">Mutually added in addressbook</option>
-            <option value="0">No one</option>
+            <option value="2">Tout le monde</option>
+            <option value="1">Les contacts mutuels du carnet d'adresses</option>
+            <option value="0">Personne</option>
           </select>
         </div>
       </form>
@@ -303,7 +303,7 @@
 <div class="row" ng-controller="TwoFactorSetupController">
   <div class="col-md-3">
     <div class="sub-header">Authentification à deux-facteurs</div>
-    <div class="sub-header-desc">Activez l'une ou les deux options de double authentification : vous pourrez choisir l'une ou l'autre au besoin ! Enable two or back up the given code where applicable.</div>
+    <div class="sub-header-desc">Activez l'une ou les deux options de double authentification : vous pourrez choisir l'une ou l'autre au besoin !</div>
   </div>
   <div class="col-md-9" submittable>
     <form role="form" class="form-horizontal">
@@ -449,7 +449,7 @@
     <button class="btn btn-success btn-block-xs" ng-click="show_encrypted_mnemonic()"><i class="glyphicon glyphicon-lock"></i> Show encrypted mnemonic</button>
     
     
-    <button class="btn btn-default btn-block-xs" ng-click="settings.usbmodal()"><i class="glyphicon glyphicon-transfer"></i> Write to a hardware wallet</button>
+    <button class="btn btn-default btn-block-xs" ng-click="settings.usbmodal()"><i class="glyphicon glyphicon-transfer"></i> Ecrire sur un Citadelle</button>
     
   </div>
 </div>
@@ -457,13 +457,13 @@
 <div class="row">
   <div class="col-md-3">
     <div class="sub-header">nLockTime</div>
-    <div class="sub-header-desc">nLockTime transactions allow you to redeem your deposited funds without GreenAddress 2nd factor signature after pre-defined number of blocks</div>
+    <div class="sub-header-desc">Les transactions nLockTime permettent de récupérer vos fonds sans le 2FA de GreenAddress, après un nombre de bloc défini.</div>
   </div>
   <div class="col-md-9">
     <form role="form" class="form-inline" ng-submit="settings.nlocktime.update()">
       <div class="form-group">
         <div ng-class="{grayedout: !settings.notifications.email_incoming || !settings.notifications.email_outgoing || !wallet.twofac.email_confirmed}">
-          <label for="id_nlocktime_blocks" class="control-label">Allow redeeming funds without GreenAddress 2nd factor signature after</label>
+          <label for="id_nlocktime_blocks" class="control-label">Autoriser la récupération des fonds sans 2FA de GreenAddress après</label>
           <input class="form-control" type="tel" ng-model="settings.nlocktime.blocks_new" ng-disabled="settings.nlocktime.updating_nlocktime_blocks || !settings.notifications.email_incoming || !settings.notifications.email_outgoing || !wallet.twofac.email_confirmed" />
           blocs
           <input type="submit" class="btn btn-sm btn-default" value="Save" ng-show="settings.nlocktime.blocks_new != settings.nlocktime.blocks" ng-disabled="settings.nlocktime.updating_nlocktime_blocks"  />
@@ -471,11 +471,11 @@
         </div>
         <div ng-hide="settings.notifications.email_incoming && settings.notifications.email_outgoing && wallet.twofac.email_confirmed">
           <hr>
-          <small class="label label-info" style="white-space: normal"><strong>note</strong>: Pour utiliser cette fonctionnalité vous devez activer les notifications de transaction (entrées et sorties).</small>
+          <small class="label label-info" style="white-space: normal"><strong>note</strong>: Pour utiliser cette fonctionnalité vous devez activer les notifications de transactions (entrées et sorties).</small>
         </div>
         <hr>
         <a href="" class="btn btn-primary btn-block-xs" ng-click="settings.expiring_soon_modal()"><i class="glyphicon glyphicon-time"></i> Montrer les sorties expirant bientôt</a>
-        <a href="" class="btn btn-info btn-block-xs" ng-class="{disabled: settings.sending_nlocktime}" ng-click="settings.send_nlocktime()"><i class="glyphicon glyphicon-send"></i> Send all nLockTime transactions by email</a>
+        <a href="" class="btn btn-info btn-block-xs" ng-class="{disabled: settings.sending_nlocktime}" ng-click="settings.send_nlocktime()"><i class="glyphicon glyphicon-send"></i> Envoyer les trasactions nLockTime par email</a>
       </div>
     </form>
   </div>
@@ -487,14 +487,14 @@
     <div class="sub-header-desc">Configurez une limite en dessous de laquelle la double authentification ne vous sera pas demandée.</div>
   </div>
   <div class="col-md-9">
-    <p>You can provide amount (BTC or fiat) limits of transactions that you can make without using two factor authentication</p>
+    <p>Vous pouvez indiquer un montant limite (BTC ou Fiat) pour vos transactions, en deca duquel le code 2FA ne sera pas demandé.</p>
     <div class="form-horizontal">
       <div class="form-group">
-        <label class="col-sm-3 control-label">Limit currency</label>
+        <label class="col-sm-3 control-label">Monnaie de la limite</label>
         <div class="col-sm-7">
           <span class="form-control form-control-noinput" value="BTC" ng-show="!wallet.limits.is_fiat">(( wallet.unit ))</span>
           <span class="form-control form-control-noinput" value="fiat" ng-show="wallet.limits.is_fiat">(( wallet.fiat_currency)) (current currency)</span>
-          <small ng-show="wallet.limits.is_fiat" class="label label-warning" style="white-space: normal"><strong>note</strong>: Using currency values for limits assumes you can trust your pricing source to provide correct values.</small>
+          <small ng-show="wallet.limits.is_fiat" class="label label-warning" style="white-space: normal"><strong>note</strong>: En utilisant une limite en monnaie standard, vous devez faire confiance à votre source de taux.</small>
         </div>
       </div>
       <!-- <div class="form-group">
@@ -507,12 +507,12 @@
         <label class="col-sm-3 control-label">Total</label>
         <div class="col-sm-7">
           <span class="form-control form-control-noinput">((wallet.limits.total|format_btc:wallet.limits.is_fiat?wallet.fiat_currency:wallet.unit))</span>
-          <small>This limit will be decreased with each transaction and you will need to "refill" it manually by changing this value.</small>
+          <small>Cette limite sera abaissée à chaque transaction et nécessitera un ajustement manuel de votre part.</small>
         </div>
       </div>
     </div>
     <div>
-      <button class="btn btn-info btn-block-xs" ng-click="change_tx_limits()"><i class="glyphicon glyphicon-edit"></i> Change limits</button>
+      <button class="btn btn-info btn-block-xs" ng-click="change_tx_limits()"><i class="glyphicon glyphicon-edit"></i> Changer les limites</button>
     </div>
   </div>
 </div>
@@ -553,28 +553,28 @@
 <hr class="double">
 <div class="row">
   <div class="col-md-3">
-    <div class="sub-header">Remove account</div>
-    <div class="sub-header-desc">You can remove your account with all associated data here.</div>
+    <div class="sub-header">Supprimer le compte</div>
+    <div class="sub-header-desc">Vous pouvez supprimer votre compte avec toutes ses données ici</div>
   </div>
   <div class="col-md-9">
-      <button class="btn btn-danger btn-block-xs" ng-click="remove_account()"><i class="glyphicon glyphicon-remove"></i> Remove account</button>
+      <button class="btn btn-danger btn-block-xs" ng-click="remove_account()"><i class="glyphicon glyphicon-remove"></i> Supprimer le compte</button>
   </div>
 </div>
 </div> <!-- id="security" -->
 <div id="accounts" ng-controller="SubwalletsController">
 <hr class="double">
 <div class="header">
-  Accounts
+  Compte
 </div>
 <div class="row">
   <div class="col-md-3">
-    <div class="sub-header">Simple accounts</div>
-    <div class="sub-header-desc">Create accounts that allow you to separate your funds. Each accounts will have its own receiving addresses.</div>
+    <div class="sub-header">Compte simple</div>
+    <div class="sub-header-desc">Créer des comptes pour séparer ses fonds. Chaque compte aura ses propres adresses de reception.</div>
   </div>
   <div class="col-md-9">
     <form ng-submit="subwallets.create_new()" class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="control-label col-sm-6">Create an account with the following label:</label>
+        <label class="control-label col-sm-6">Créer un compte avec le nom suivant :</label>
         <div class="col-sm-6">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Label" ng-model="subwallets.new_label" ng-disabled="subwallets.adding_subwallet">
@@ -585,7 +585,7 @@
         </div>
       </div>
     </form>
-    <h3 ng-show="subwallets.existing.length">Your simple accounts:</h3>
+    <h3 ng-show="subwallets.existing.length">Vos comptes simples:</h3>
     <table class="table table-striped" id="id_addressbook">
       <thead>
         <th>Nom</th>
@@ -601,10 +601,10 @@
 
         </td>
         <td>
-          <a ng-hide="subwallet.renaming" class="btn btn-xs btn-default" href="" ng-click="subwallets.start_rename(subwallet)"><i class="glyphicon glyphicon-edit"></i> Rename</a>
+          <a ng-hide="subwallet.renaming" class="btn btn-xs btn-default" href="" ng-click="subwallets.start_rename(subwallet)"><i class="glyphicon glyphicon-edit"></i> Renommer</a>
           <a ng-show="subwallet.renaming" class="btn btn-xs btn-default" href="" ng-click="submit_me()"><i class="glyphicon glyphicon-save"></i> Enregistrer</a>
           <a class="btn btn-xs btn-default" href="" ng-click="subwallets.send_from(subwallet)"><i class="glyphicon glyphicon-send"></i> Envoyer</a>
-          <a class="btn btn-xs btn-default" href="" ng-click="subwallets.receive_to(subwallet)"><i class="icon-bitcoin"></i> Receive</a>
+          <a class="btn btn-xs btn-default" href="" ng-click="subwallets.receive_to(subwallet)"><i class="icon-bitcoin"></i> Recevoir</a>
         </td>
       </tr>
     </table>
@@ -613,14 +613,14 @@
 <hr class="double">
 <div class="row">
   <div class="col-md-3">
-    <div class="sub-header">2of3 accounts</div>
-    <div class="sub-header-desc">Create accounts that allow you to access your funds at any time even without access to Goochain Citadelle Wallet, using additional offline recovery key.<br/><strong>NOTE:</strong> <a href="http://blog.greenaddress.it/2of3recovery" target="_blank">Recovery guide</a><br/><strong>NOTE:</strong> instant transactions are not available for these accounts because Goochain Citadelle Wallet can't protect them from double spending.</div>
+    <div class="sub-header">Comptes 2of3</div>
+    <div class="sub-header-desc">Créer des comptes avec de fonds accessibles à tout moment, même sans Green Address, en utilisant le système de récupération avec une nouvelle clé offline.<br/><strong>NOTE:</strong> <a href="http://blog.greenaddress.it/2of3recovery" target="_blank">Recovery guide</a></div>
     
   </div>
   <div class="col-md-9">
     <form ng-submit="subwallets.create_new_2of3()" class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="control-label col-sm-6">Create a 2of3 account with the following label:</label>
+        <label class="control-label col-sm-6">Créer un compte 2of3 avec le nom suivant :</label>
         <div class="col-sm-6">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Label" ng-model="subwallets.new_2of3_label" ng-disabled="subwallets.adding_subwallet">
@@ -632,13 +632,13 @@
         </div>
       </div>
       <div class="form-group" ng-show="subwallets.new_2of3_label">
-      <label class="control-label col-sm-6">Optionally provide your custom recovery xpub:</label>
+      <label class="control-label col-sm-6">Fournir son propre XPUB pour la récupération (optionel):</label>
       <div class="col-sm-6">
         <input type="text" class="form-control" placeholder="xpub" ng-model="subwallets.new_2of3_xpub" ng-disabled="subwallets.adding_subwallet">
       </div>
       </div>
     </form>
-    <h3 ng-show="subwallets.existing.length">Your 2of3 accounts:</h3>
+    <h3 ng-show="subwallets.existing.length">Vos comptes 2of3 :</h3>
     <table class="table table-striped" id="id_addressbook">
       <thead>
         <th>Nom</th>
@@ -654,10 +654,10 @@
 
         </td>
         <td>
-          <a ng-hide="subwallet.renaming" class="btn btn-xs btn-default" href="" ng-click="subwallets.start_rename(subwallet)"><i class="glyphicon glyphicon-edit"></i> Rename</a>
+          <a ng-hide="subwallet.renaming" class="btn btn-xs btn-default" href="" ng-click="subwallets.start_rename(subwallet)"><i class="glyphicon glyphicon-edit"></i> Renommer</a>
           <a ng-show="subwallet.renaming" class="btn btn-xs btn-default" href="" ng-click="submit_me()"><i class="glyphicon glyphicon-save"></i> Enregistrer</a>
           <a class="btn btn-xs btn-default" href="" ng-click="subwallets.send_from(subwallet)"><i class="glyphicon glyphicon-send"></i> Envoyer</a>
-          <a class="btn btn-xs btn-default" href="" ng-click="subwallets.receive_to(subwallet)"><i class="icon-bitcoin"></i> Receive</a>
+          <a class="btn btn-xs btn-default" href="" ng-click="subwallets.receive_to(subwallet)"><i class="icon-bitcoin"></i> Recevoir</a>
         </td>
       </tr>
     </table>

@@ -9,7 +9,7 @@
   <div class="col-md-12">
     <form role="form" class="form-horizontal">
       <div class="form-group" ng-show="wallet.subaccounts.length">
-        <label class="col-sm-2 control-label" for="amount">From account</label>
+        <label class="col-sm-2 control-label" for="amount">Du compte</label>
         <div class="col-sm-10">
           <select class="form-control" ng-model="wallet.current_subaccount" ng-options="subwallet.pointer as subwallet.name for subwallet in [{pointer: 0, name: 'Main'}].concat(wallet.subaccounts)" style="float: right;">
           </select>
@@ -17,8 +17,8 @@
         <hr class="double">
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="voucher_text" ng-show="send_tx.voucher">Voucher Text (optional)</label>
-        <label class="col-sm-2 control-label" for="recipient" ng-hide="send_tx.voucher">Le destinataire</label>
+        <label class="col-sm-2 control-label" for="voucher_text" ng-show="send_tx.voucher">Texte du bon (optionel)</label>
+        <label class="col-sm-2 control-label" for="recipient" ng-hide="send_tx.voucher">Destinataire</label>
         <div class="col-sm-10" ng-show="send_tx.voucher">
 
             <input ng-model="send_tx.voucher_text" class="form-control" type="text" id="voucher_text" placeholder="Enter any clear text message that will appear on the voucher" />
@@ -96,7 +96,7 @@
         <div class="col-sm-offset-2 col-sm-10">
            <label>
             <input type="checkbox" ng-model="send_tx.spend_all" />
-            <span>Sweep all the funds from the wallet</span>
+            <span>Enlever tous les fonds du wallet</span>
           </label>
         </div>
       </div>
@@ -144,20 +144,20 @@
       <div class="form-group" ng-hide="send_tx.advanced_options_visible && send_tx.recipient.type != 'payreq'">
         <div class="col-sm-offset-2 col-sm-10">
           <label class="text-petty radio-inline" style="padding:0 5px 0 0; display: inline-block;">
-            Network fee will be added to the amount <br />
-            Rate is <div style="display:inline" ng-include="'/'+LANG+'/wallet/partials/wallet_fiat_price.html'"></div>
+            Une fee d'utilisation du réseau Bitcoin sera ajoutée au montant <br />
+            Son montant est de <div style="display:inline" ng-include="'/'+LANG+'/wallet/partials/wallet_fiat_price.html'"></div>
                 <a class="btn btn-default btn-sm" style="min-width: 35px !important; width: 35px !important" ng-click="wallet.update_balance()" ng-hide="wallet.balance_updating"><i class="glyphicon glyphicon-refresh"></i></a>
                 <a class="btn btn-default btn-sm" style="min-width: 35px !important; width: 35px !important" ng-show="wallet.balance_updating"><i class="glyphicon spin"></i></a>
           </label>
         </div>
       </div>
       <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10" ng-hide="send_tx.recipient.type == 'payreq' && !send_tx.instant">
+      <!-- <div class="col-sm-offset-2 col-sm-10" ng-hide="send_tx.recipient.type == 'payreq' && !send_tx.instant">
           <label tooltip="Requires recipient to trust Goochain Citadelle Wallet instant confirmations">
             <input type="checkbox" ng-model="send_tx.instant" ng-disabled="send_tx.recipient.type == 'payreq'" />
             <span>Instant Confirmation</span>
           </label>
-        </div>
+        </div> -->
       </div>
       <hr ng-hide="send_tx.recipient.type == 'payreq'">
       <div class="form-group" ng-hide="send_tx.recipient.type == 'payreq'">
@@ -172,14 +172,14 @@
       </div>
       <hr class="double">
       <button ng-disabled="send_tx.sending || send_tx.processing_payreq" class="btn btn-primary btn-block-xs pull-right" ng-click="send_tx.send_money()" href=""><i class="glyphicon glyphicon-send"></i>
-        <span ng-hide="send_tx.voucher || (send_tx.sending && send_tx.signing)">Review &amp; Send Money</span>
+        <span ng-hide="send_tx.voucher || (send_tx.sending && send_tx.signing)">Vérifier &amp; envoyer l'argent</span>
         <span ng-show="!send_tx.voucher && send_tx.sending && send_tx.signing">
-          <span ng-show="send_tx.verifying">Verifying ((send_tx.verifying_percentage))% /</span>
-          Signing ((send_tx.signing_percentage))%</span>
+          <span ng-show="send_tx.verifying">Verification ((send_tx.verifying_percentage))% /</span>
+          Signature ((send_tx.signing_percentage))%</span>
         <span ng-show="send_tx.voucher">Create a Voucher</span>
       </button>
       <div class="pull-right" ng-hide="send_tx.advanced_options_visible">
-        <a class="btn btn-default" ng-click="send_tx.advanced_options_visible = true"><i class="glyphicon glyphicon-wrench"></i> Show advanced options</a>
+        <a class="btn btn-default" ng-click="send_tx.advanced_options_visible = true"><i class="glyphicon glyphicon-wrench"></i> Options avancées</a>
       </div>
     </form>
   </div>
