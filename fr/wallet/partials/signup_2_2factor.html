@@ -15,8 +15,8 @@
                 <div ng-if="signup.logged_in" ng-controller="TwoFactorSetupController" ng-include="'/fr/wallet/partials/wallet_2fa.html'"></div>
                 <div ng-hide="signup.logged_in" style="text-align: center">Please wait while we log you into your new wallet...</div>
                 <hr class="double">
-                <p>We require you to set up two factor authentication, this will make your wallet much more secure and will let you some additional features such as Spending Limits and Delayed Payments.</p>
-                <p>To issue a transaction you will not only need to login to your wallet but also confirm it with a code sent to you via email, SMS or google authenticator as per your choice.</p>
+                <p>Le second facteur est obligatoire, cela renforce la sécurité de votre wallet</p>
+                <p>Chaque transaction sera envoyée après vérification du code 2FA.</p>
             </div>
 
             <div class="create-modal-footer">

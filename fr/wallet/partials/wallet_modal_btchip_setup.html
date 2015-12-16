@@ -1,24 +1,23 @@
 <div class="modal-body text-center">
 	<div ng-show="btchip.already_setup">
-    	<p>Your Citadelle is already set up. To use it with Goochain Citadelle Wallet, you need to reset it. Do you want to reset your Citadelle? This will be performed by entering wrong PIN 3 times in a row. <strong>You will lose your keys currently stored on the device.</strong></p>
+    	<p>Votre Citadelle est déjà configurée. Avant de la réinitialiser, vous devez la remettre à zéro en entrant 3 faux PIN. <strong>Vous perdrez les clés stockées dedans.</strong></p>
     	<button ng-hide="btchip.resetting" type="button" class="btn btn-danger" ng-click="btchip.reset()">Reset my Citadelle</button>
     	<button ng-show="btchip.resetting" type="button" disabled="disabled" class="btn btn-danger" ng-click="btchip.reset()">Resetting...
-    	<span ng-show="btchip.replug_required">Please unplug and plug your device in again (<span>(( btchip.resets_remaining )) wrong PINs remaining</span>)</span></button>
+    	<span ng-show="btchip.replug_required">Débranchez puis rebranchez votre Citadelle (<span>(( btchip.resets_remaining )) essais de PIN restants</span>)</span></button>
     </div>
 	<div ng-show="!btchip.already_setup && !btchip.gait_setup">
-    	<p ng-show="btchip.use_gait_mnemonic">Empty Citadelle detected successfully. Click the button below to store your seed on it.</p>
-        <p ng-hide="btchip.use_gait_mnemonic">Empty Citadelle detected successfully. Click the button below to set it up.</p>
-    	<button type="button" class="btn btn-success" ng-click="btchip.store()" ng-hide="btchip.storing || !btchip.use_gait_mnemonic">Save to Citadelle</button>
-        <button type="button" class="btn btn-success" ng-click="btchip.store()" ng-hide="btchip.use_gait_mnemonic" ng-disabled="btchip.setting_up">Set up Citadelle</button>
+    	<p ng-show="btchip.use_gait_mnemonic">Une Citadelle vierge a bien été détéctée. Cliquez sur le bouton ci-dessous pour y écrire votre wallet seed.</p>
+        <p ng-hide="btchip.use_gait_mnemonic">Une Citadelle vierge a bien été détéctée. Cliquez sur le bouton ci-dessous pour la configurer.</p>
+    	<button type="button" class="btn btn-success" ng-click="btchip.store()" ng-hide="btchip.storing || !btchip.use_gait_mnemonic">Ecrire dans Citadelle</button>
+        <button type="button" class="btn btn-success" ng-click="btchip.store()" ng-hide="btchip.use_gait_mnemonic" ng-disabled="btchip.setting_up">Configurer Citadelle</button>
         <span class="btn btn-success disabled" ng-show="btchip.storing">
            	Génération des clés de votre porte-monnaie, merci de patienter... ... (( btchip.seed_progress ))%
         </span>
     </div>
 	<div ng-show="btchip.gait_setup">
-        <p ng-show="btchip.replug_for_backup">Citadelle setup successful!
-        Please unplug your Citadelle and plug it into a secure device supporting USB keyboards to read the seed backup.
-        <strong>On the second device remember to first open a text editor or a similar application where the seed will be typed in by Citadelle.</strong></p>
-    	<p ng-hide="btchip.replug_for_backup">Citadelle setup successful!</p>
+        <p ng-show="btchip.replug_for_backup">Citadelle configurée avec succès!
+		</p>
+    	<p ng-hide="btchip.replug_for_backup">Citadelle configurée avec succès!</p>
     </div>
 </div>
 <div class="modal-footer">

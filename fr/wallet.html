@@ -176,10 +176,10 @@
   </div>
   </div>
   <div class="container" toggle-class="visible">
-    <p ng-show="wallet.twofac && !wallet.twofac.any"><span class="label label-warning">WARNING:</span> You have no two factor authentication set up. Please set it up in <a href="#/settings">settings</a>.</p>
-    <p ng-show="wallet.hdwallet.priv && !wallet.appearance.mnemonic_verified && !wallet.logged_in_with_encrypted_mnemonics"><span class="label label-warning">WARNING</span>
-      You have not verified that you have backed up your mnemonic.
-      <a href="" ng-click="verify_mnemonic()">Please verify now by clicking here.</a>
+    <p ng-show="wallet.twofac && !wallet.twofac.any"><span class="label label-warning">ATTENTION</span> Aucun second facteur s&#233;lectionn&#233;, veuillez en activer un. <a href="#/settings">settings</a>.</p>
+    <p ng-show="wallet.hdwallet.priv && !wallet.appearance.mnemonic_verified && !wallet.logged_in_with_encrypted_mnemonics"><span class="label label-warning">ATTENTION</span>
+      Vous n&rsquo;avez pas encore v&#233;rifier la bonne sauvegarde de votre passe-phrase mn&#233;monique.
+      <a href="" ng-click="verify_mnemonic()">Veuillez v&#233;rifier en cliquant ici.</a>
     </p>
     <div class="ng-view"></div>
   </div>
@@ -187,17 +187,17 @@
   <ul>
     <li class="menu-header"><img src="/static/img/logos/logo-citadelle-menu.png" alt="Goochain Citadelle Wallet" />Citadelle Wallet</li>
     <li path="/info"><a href="#/info">Transactions</a></li>
-    <li ng-show="wallet.hdwallet.priv || wallet.trezor_dev || wallet.btchip" path="/send"><a href="#/send">Envoyer de l'argent</a></li>
-    <li path="/receive"><a href="#/receive">Recevoir de l'argent</a></li>
-    <li path="/address-book"><a href="#/address-book">Carnet d'adresses</a></li>
-    <li ng-show="wallet.hdwallet.priv || wallet.trezor_dev || wallet.btchip" path="/settings" class="menu-settings"><a href="#/settings">Paramètres</a></li>
+    <li ng-show="wallet.hdwallet.priv || wallet.trezor_dev || wallet.btchip" path="/send"><a href="#/send">Envoyer de l&rsquo;argent</a></li>
+    <li path="/receive"><a href="#/receive">Recevoir de l&rsquo;argent</a></li>
+    <li path="/address-book"><a href="#/address-book">Carnet d&rsquo;adresses</a></li>
+    <li ng-show="wallet.hdwallet.priv || wallet.trezor_dev || wallet.btchip" path="/settings" class="menu-settings"><a href="#/settings">Param&egrave;tres</a></li>
 
-    <li ng-show="settings" du-scrollspy="general" class="menu-submenu"><a href="#general" du-smooth-scroll>General</a></li>
-    <li ng-show="settings" du-scrollspy="security" class="menu-submenu"><a href="#security" du-smooth-scroll>Security</a></li>
-    <li ng-show="settings" du-scrollspy="accounts" class="menu-submenu"><a href="#accounts" du-smooth-scroll>Accounts</a></li>
+    <li ng-show="settings" du-scrollspy="general" class="menu-submenu"><a href="#general" du-smooth-scroll>G&eacute;n&eacute;ral</a></li>
+    <li ng-show="settings" du-scrollspy="security" class="menu-submenu"><a href="#security" du-smooth-scroll>S&eacute;curit&eacute;</a></li>
+    <li ng-show="settings" du-scrollspy="accounts" class="menu-submenu"><a href="#accounts" du-smooth-scroll>Comptes</a></li>
 
-    <li><a href="" ng-click="update_now()" ng-show="update_available">Mettre à jour</a></li>
-    <li><a href="" ng-click="logout()">Déconnexion</a></li>
+    <li><a href="" ng-click="update_now()" ng-show="update_available">Mettre &agrave; jour</a></li>
+    <li><a href="" ng-click="logout()">D&eacute;connexion</a></li>
   </ul>
   <div class="menu-footer">
       <div ng-show="(wallet.hdwallet.pub || wallet.trezor_dev) && !wallet.hidden && is_loading" ng-cloak>
@@ -209,9 +209,9 @@
         
     
     <div ng-show="wallet.last_login">
-      Dernière connexion:
+      Derni&egrave;re connexion:
       ((wallet.last_login.at))
-      from ((wallet.last_login.ip))
+      depuis ((wallet.last_login.ip))
       <span ng-show="wallet.last_login.country">(pays: ((wallet.last_login.country)))</span>
       <span ng-hide="wallet.last_login.country">(Pays inconnu)</span>
       <br />
@@ -219,7 +219,7 @@
     <div style="margin-top:5px;" ng-show="wallet.version">
       <span>App version: ((wallet.version))</span>
     </div>
-    <div><b>Copyright &copy; Green Address and Goochain 2015</b></div>
+    <div><b>Copyright &copy; GreenAddress et Goochain 2015</b></div>
   </div>
 </div>
 </div>
