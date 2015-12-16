@@ -10,7 +10,7 @@
   <div class="col-md-12">
     <form role="form" class="form-horizontal">
       <div class="form-group" ng-show="wallet.subaccounts.length">
-        <label class="col-sm-2 control-label" for="amount">Account</label>
+        <label class="col-sm-2 control-label" for="amount">Compte</label>
         <div class="col-sm-10">
           <select class="form-control" ng-model="wallet.current_subaccount" ng-options="subwallet.pointer as subwallet.name for subwallet in [{pointer: 0, name: 'Main'}].concat(wallet.subaccounts)" style="float: right;">
           </select>
@@ -77,7 +77,7 @@
       <div ng-show="receive.show_sweep && receive.advanced_options_visible">
         <hr>
         <div class="form-group">
-          <label class="col-sm-2 control-label" for="id_privkey_wif">Private key in WIF or BIP38 format</label>
+          <label class="col-sm-2 control-label" for="id_privkey_wif">Clé privée en format WIF ou BIP38</label>
           <div class="col-sm-10">
             <div class="col-sm-12" style="padding-right: 0 !important">
               <div class="input-group">
@@ -110,7 +110,7 @@
         <a class="btn btn-default btn-block-xs" ng-click="receive.show_previous_addresses()"><i class="glyphicon glyphicon-time"></i> Voir les adresses générées</a>
       </div>
       <div class="pull-right" ng-hide="receive.advanced_options_visible">
-        <a class="btn btn-default btn-xs" ng-click="receive.advanced_options_visible = true"><i class="glyphicon glyphicon-wrench"></i> Show advanced options</a>
+        <a class="btn btn-default btn-xs" ng-click="receive.advanced_options_visible = true"><i class="glyphicon glyphicon-wrench"></i> Options avancées</a>
       </div>
     </form>
   </div>
