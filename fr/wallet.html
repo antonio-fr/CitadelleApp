@@ -45,11 +45,11 @@
     <link href="/static/css/citadelle.css" rel="stylesheet" />
     
     
-    <script src="/static/wallet/config.js"></script>
     <script src="/fr/i18n_catalog.js"></script>
     <script type="text/javascript">
       BASE_URL = '';
       LANG = 'fr';</script>
+    <script src="/static/wallet/config.js"></script>
     
   <link href="/static/css/dc.min.css" rel="stylesheet" />
 
@@ -127,6 +127,7 @@
 <script src="/static/js/trezor-hid.js"></script>
 
 
+    <script src="/static/wallet/network.js"></script>
     
     
     
@@ -177,7 +178,7 @@
   </div>
   <div class="container" toggle-class="visible">
     <p ng-show="wallet.twofac && !wallet.twofac.any"><span class="label label-warning">ATTENTION</span> Aucun second facteur s&#233;lectionn&#233;, veuillez en activer un. <a href="#/settings">settings</a>.</p>
-    <p ng-show="wallet.hdwallet.priv && !wallet.appearance.mnemonic_verified && !wallet.logged_in_with_encrypted_mnemonics"><span class="label label-warning">ATTENTION</span>
+    <p ng-show="wallet.hdwallet.keyPair.d && !wallet.appearance.mnemonic_verified && !wallet.logged_in_with_encrypted_mnemonics"><span class="label label-warning">ATTENTION</span>
       Vous n&rsquo;avez pas encore v&#233;rifier la bonne sauvegarde de votre passe-phrase mn&#233;monique.
       <a href="" ng-click="verify_mnemonic()">Veuillez v&#233;rifier en cliquant ici.</a>
     </p>
@@ -187,10 +188,10 @@
   <ul>
     <li class="menu-header"><img src="/static/img/logos/logo-citadelle-menu.png" alt="Goochain Citadelle Wallet" />Citadelle Wallet</li>
     <li path="/info"><a href="#/info">Transactions</a></li>
-    <li ng-show="wallet.hdwallet.priv || wallet.trezor_dev || wallet.btchip" path="/send"><a href="#/send">Envoyer de l&rsquo;argent</a></li>
+    <li ng-show="wallet.hdwallet.keyPair.d || wallet.trezor_dev || wallet.btchip" path="/send"><a href="#/send">Envoyer de l&rsquo;argent</a></li>
     <li path="/receive"><a href="#/receive">Recevoir de l&rsquo;argent</a></li>
     <li path="/address-book"><a href="#/address-book">Carnet d&rsquo;adresses</a></li>
-    <li ng-show="wallet.hdwallet.priv || wallet.trezor_dev || wallet.btchip" path="/settings" class="menu-settings"><a href="#/settings">Param&egrave;tres</a></li>
+    <li ng-show="wallet.hdwallet.keyPair.d || wallet.trezor_dev || wallet.btchip" path="/settings" class="menu-settings"><a href="#/settings">Param&egrave;tres</a></li>
 
     <li ng-show="settings" du-scrollspy="general" class="menu-submenu"><a href="#general" du-smooth-scroll>G&eacute;n&eacute;ral</a></li>
     <li ng-show="settings" du-scrollspy="security" class="menu-submenu"><a href="#security" du-smooth-scroll>S&eacute;curit&eacute;</a></li>
