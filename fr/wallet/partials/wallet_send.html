@@ -21,7 +21,7 @@
         <label class="col-sm-2 control-label" for="recipient" ng-hide="send_tx.voucher">Destinataire</label>
         <div class="col-sm-10" ng-show="send_tx.voucher">
 
-            <input ng-model="send_tx.voucher_text" class="form-control" type="text" id="voucher_text" placeholder="Enter any clear text message that will appear on the voucher" />
+            <input ng-model="send_tx.voucher_text" class="form-control" type="text" id="voucher_text" placeholder="Entrer un message qui apparaitra sur le coupon" />
 
         </div>
         <div class="col-sm-10" ng-hide="send_tx.voucher">
@@ -55,7 +55,7 @@
         <div class="col-sm-offset-2 col-sm-10">
            <label>
             <input type="checkbox" ng-model="send_tx.voucher" />
-            <span>Create a voucher instead of sending to a recipient</span>
+            <span>Creer un coupon au lieu d'envoyer vers une adresse</span>
           </label>
         </div>
       </div>
@@ -112,7 +112,7 @@
               <div class="input-group">
                 <span class="input-group-addon">((wallet.unit))</span>
                 
-                    <input class="form-control" type="text" ng-model="send_tx.add_fee.amount" placeholder="Leave empty for default" />
+                    <input class="form-control" type="text" ng-model="send_tx.add_fee.amount" placeholder="Blanc par defaut" />
                 
               </div>
             </div>
@@ -120,7 +120,7 @@
 
               <label class="form-control form-control-noinput">
                 <input type="checkbox" ng-model="send_tx.add_fee.per_kb" ng-disabled="send_tx.instant" />
-                <span>per kB</span>
+                <span>par kB</span>
               </label>
             </div>
           </div>
@@ -165,7 +165,7 @@
         <div class="col-sm-10">
           <div class="row">
             <div class="col-md-12">
-              <input class="form-control" type="text" ng-model="send_tx.memo" placeholder="You can enter a memo to store in your transactions list" />
+              <input class="form-control" type="text" ng-model="send_tx.memo" placeholder="Entrer optionnellement un memo pour votre liste des transactions" />
             </div>
           </div>
         </div>
